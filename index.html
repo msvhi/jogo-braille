@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio Braille</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Tela Inicial -->
+    <div id="start-screen" class="screen active">
+        <div class="glass-card start-card">
+            <h1 class="game-title">Desafio Braille</h1>
+            <p class="game-subtitle">Solo Challenge</p>
+            <div class="best-score-display">
+                <span class="best-score-label">🏆 Melhor Pontuação</span>
+                <span id="best-score-start" class="best-score-value">0</span>
+            </div>
+            <div class="difficulty-selector">
+                <span class="difficulty-title">Escolha o nível:</span>
+                <div class="difficulty-buttons">
+                    <button class="difficulty-btn difficulty-easy selected" data-difficulty="easy">
+                        <span class="difficulty-name">Fácil</span>
+                        <span class="difficulty-details">10 questões · 20s</span>
+                    </button>
+                    <button class="difficulty-btn difficulty-medium" data-difficulty="medium">
+                        <span class="difficulty-name">Médio</span>
+                        <span class="difficulty-details">20 questões · 40s</span>
+                    </button>
+                    <button class="difficulty-btn difficulty-hard" data-difficulty="hard">
+                        <span class="difficulty-name">Difícil</span>
+                        <span class="difficulty-details">30 questões · 1min10s</span>
+                    </button>
+                </div>
+            </div>
+            <button id="btn-start" class="btn-primary">▶ Iniciar</button>
+        </div>
+    </div>
+
+    <!-- Tela do Jogo -->
+    <div id="game-screen" class="screen">
+        <div class="game-header">
+            <div class="progress-info">
+                <span id="question-counter" class="question-counter">1/10</span>
+                <span id="streak-display" class="streak-display">🔥 0</span>
+            </div>
+            <div class="score-display">
+                <span class="score-label">Pontos</span>
+                <span id="score-value" class="score-value">0</span>
+            </div>
+        </div>
+
+        <div class="timer-container">
+            <div id="timer-bar" class="timer-bar"></div>
+        </div>
+
+        <div class="question-area">
+            <div id="question-display" class="question-display"></div>
+        </div>
+
+        <div class="answers-grid">
+            <button class="answer-btn answer-cyan" data-answer="0"></button>
+            <button class="answer-btn answer-violet" data-answer="1"></button>
+            <button class="answer-btn answer-orange" data-answer="2"></button>
+            <button class="answer-btn answer-magenta" data-answer="3"></button>
+        </div>
+
+        <div id="feedback" class="feedback"></div>
+    </div>
+
+    <!-- Tela de Fim de Jogo -->
+    <div id="end-screen" class="screen">
+        <div class="glass-card end-card">
+            <h2 class="end-title">Fim de Jogo!</h2>
+            <div id="new-record-badge" class="new-record-badge hidden">🏆 Novo Recorde!</div>
+            <div class="end-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Pontuação Final</span>
+                    <span id="final-score" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Acertos</span>
+                    <span id="final-correct" class="stat-value">0/10</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Maior Sequência</span>
+                    <span id="final-streak" class="stat-value">0</span>
+                </div>
+            </div>
+            <button id="btn-play-again" class="btn-primary"> Jogar Novamente</button>
+        </div>
+    </div>
+
+    <!-- Botão Fixo da Tabela Braille -->
+    <button id="btn-braille-table" class="braille-table-btn" title="Tabela Braille">⠃⠗⠇</button>
+
+    <!-- Modal da Tabela Braille -->
+    <div id="braille-modal" class="modal-overlay">
+        <div class="modal-content glass-card">
+            <div class="modal-header">
+                <h2>Tabela Braille</h2>
+                <button id="btn-close-modal" class="modal-close">✕</button>
+            </div>
+            <div class="modal-body">
+                <h3 class="modal-section-title">Números</h3>
+                <div class="braille-grid" id="braille-numbers"></div>
+                <h3 class="modal-section-title">Operadores</h3>
+                <div class="braille-grid" id="braille-operators"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
